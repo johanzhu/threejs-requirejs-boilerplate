@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		body,html{background:#FFFFFF; width: 100%;height: 100%;margin: 0;padding: 0;overflow: hidden;}
+		</style>
+	</head>
+	<body>
+	<script type="text/javascript" src="src/requirejs/require.js" ></script>
+	<script type="text/javascript" src="src/lib/stats.js" ></script>
+	<script>
+    requirejs.config({
+    	baseUrl: 'src/',
+        paths: {
+		    three: 'lib/three',
+			preload: 'lib/preload',
+			tween: 'lib/tween',
+			orbitcontrols: 'lib/OrbitControls',
+			
+			world: 'app/world',
+			util: 'app/threeUtil',
+			scene1: 'app/scene1',
+			scene2: 'app/scene2'
+        },
+        shim: {
+	      	three: {
+	      		exports: 'three'
+	      	},
+	      	util: {
+	      	 	deps: ['three'],
+	            exports: 'Util'
+	      	},
+	      	orbitcontrols: {
+	      		deps: ['three'],
+	      		exports: 'OrbitControls'
+	      	},
+	      	tween: {
+	      	    exports: 'tween'
+	      	},
+	        preload: {
+	         	exports: 'createjs.LoadQueue'
+	        }
+        }
+    });
+    require(['app/main']);
+    </script>
+	</body>
+</html>
